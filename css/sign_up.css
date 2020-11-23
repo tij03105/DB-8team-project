@@ -1,0 +1,185 @@
+body {
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 1092.33px;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    display: block;
+}
+
+#main {
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    height: 1092.33px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.background-wrapper {
+    position: absolute;
+    background-size: cover;
+    height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    width: 100%;
+    z-index: -1;
+}
+
+.background-wrapper .background {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+#header {
+    position: relative;
+    width: 100vw;
+    margin: 22.5px 0 20px 3vw;
+}
+
+#logo {
+    height: auto;
+    width: 167px;
+}
+
+#container {
+    position: relative;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 314px;
+    height: 675.33px;
+    left: 50vw;
+    margin-left: -233.5px;
+    border-radius: 4px;
+    padding: 60px 68px 40px 68px;
+    margin-bottom: 90px;
+}
+
+#sign-up-form {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 340.667px;
+}
+
+#sign-up-text {
+    margin: 0;
+    font-size: 32px;
+    color: white;
+}
+
+.label-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 28px;
+}
+
+.box-container {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border-width: 0;
+    background-color: #363636;
+}
+
+#sign-up-button-container {
+    margin-top: 40px;
+    margin-bottom: 12px;
+    height: 48px;
+}
+
+
+.input-field {
+    position: relative;
+    width: 274px;
+    height: 23px;
+    border-radius: 4px;
+    outline: 0 none;
+    border-width: 0;
+    padding: 16px 20px 10px 20px;
+    font-size:16px;
+    color: white;
+    background-color: transparent;
+}
+
+#sign-up-button {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-width: 0;
+    border-radius: 4px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    font-size: 16px;
+}
+
+.select-container {
+    margin-bottom: 16px;
+}
+
+#select-sex {
+    width: 100%;
+    height: 50px;
+    padding: 16px;
+    font-size:16px;
+    border-radius: 4px;
+    border-color:#363636;
+    color:#ffffff;
+    font-family: inherit;
+    background: url('/img/arrow.jpg') no-repeat 100% 0%;
+    background-size: 50px;
+    background-color: #363636;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+.date-container {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 16px;
+}
+
+#select-month {
+    width: 30%;
+    height: 50px;
+    padding: 5px;
+    font-size:16px;
+    border-radius: 4px;
+    margin-left:5px;
+    margin-right:5px;
+    border-color:#363636;
+    color:#ffffff;
+    font-family: inherit;
+    background: url('/img/arrow.jpg') no-repeat 95% 50%;
+    background-size: 25px;
+    background-color: #363636;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+.year-field, .day-field {
+    width: 28%;
+    height: 50px;
+    color:#ffffff;
+    background-color: #363636;
+    font-size: 16px;
+    border-width: 0px;
+    border-radius: 4px;
+    padding-left: 8px;
+    outline: none;
+}

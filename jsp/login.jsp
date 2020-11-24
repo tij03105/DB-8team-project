@@ -34,7 +34,7 @@
         }
         else{
             out.println("<script>");
-            out.println("location.href='../main_page.html'");
+            out.println("location.href='../all_rating.html'");
             out.println("</script>");
         }
 	%>

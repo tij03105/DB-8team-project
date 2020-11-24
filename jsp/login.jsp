@@ -28,13 +28,15 @@
         rs = pstmt.executeQuery();
         if(!rs.isBeforeFirst()){
             out.println("<script>");
-            out.println("alert('계정을 다시 확인하세요')");
+            out.println("alert('아이디와 비밀번호를 다시 확인하세요')");
             out.println("location.href='../index.html'");
             out.println("</script>");
         }
         else{
+            session.setAttribute("id", id);
+            session.setAttribute("pw", password);
             out.println("<script>");
-            out.println("location.href='../all_rating.html'");
+            out.println("location.href='../main_page.html'");
             out.println("</script>");
         }
 	%>

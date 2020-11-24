@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <title>main_page</title>
   <link rel="stylesheet" type="text/css" href="css/main_page.css" />
 </head>
 <body>
   <header>
     <div class="logo">
+      <a href="main_page.html">
       <img id="logo" src="img/logo.png">
+      </a>
     </div>
     <nav class="main-nav">
       <a href="#recommend">Recommend</a>
@@ -17,8 +21,16 @@
       <a href="#mylist">Mylist</a>
     </nav>
     <nav class="sub-nav">
-      <a href="#"><i class="search"></i></a>
-      <a href="#">Account</a>  
+      <li class="dropdown">
+        <div class="account-menu">Account</div>
+        <div class="menu-content">
+          <a href="change_pw.html">비밀번호변경</a>
+          <a href="#">개인정보수정</a>
+          <a href="#">회원탈퇴</a>
+          <a href="jsp/logout.jsp">로그아웃</a>
+          </script>
+        </div>
+      </li>
     </nav>
   </header>
   <div class="main">

@@ -9,34 +9,40 @@
         <div class="background-wrapper">
             <img class="background" src="img/KR-ko-20201116-popsignuptwoweeks-perspective_alpha_website_medium.jpg">
         </div>
-        <div class="main">
+        <div id="main">
             <div id="header">
                 <a href="index.html">
                     <img id="logo" src="img/logo.png">
                 </a>
             </div>
             <div id="container">
-                <form class="sign-up-form" action="jsp/sign_up.jsp" method="post">
+                <form class="sign-up-form" action="/jsp/sign_up.jsp" method="post">
                     <div class="label-container">
                         <h2 id="sign-up-text">회원가입</h2>
                     </div>
                     <div class="box-container">
-                        <input class="input-field" type="text" name="id" placeholder="아이디" required>
+                        <input class="input-field" type="text" name="id" placeholder="*아이디" required>
                     </div>
                     <div class="box-container">
-                        <input class="input-field" type="password" name="pass" placeholder="비밀번호" required>
+                        <input class="input-field" type="password" name="pass" placeholder="*비밀번호" required>
                     </div>
                     <div class="box-container">
-                        <input class="input-field" type="password" name="checkPass" placeholder="비밀번호 재확인" required>
+                        <input class="input-field" type="password" name="checkPass" placeholder="*비밀번호 재확인" required>
                     </div>
                     <div class="box-container">
-                        <input class="input-field" type="text" name="name" placeholder="이름" required>
+                        <input class="input-field" type="text" name="phone" placeholder="*휴대폰 번호" required>
                     </div>
                     <div class="box-container">
-                        <input class="input-field" type="text" name="address" placeholder="주소" required>
+                        <input class="input-field" type="text" name="name" placeholder="*이름" required>
                     </div>
                     <div class="box-container">
-                        <input class="input-field" type="text" name="address" placeholder="직업" required>
+                        <input class="input-field" type="text" name="address" placeholder="주소">
+                    </div>
+                    <div class="box-container">
+                        <input class="input-field" type="text" name="job" placeholder="직업">
+                    </div>
+                    <div class="box-container">
+                        <input class="input-field" type="text" name="date" placeholder="생년월일(YYYYMMDD)">
                     </div>
                     <div class="select-container">
                         <select id="select-sex" name="sex">
@@ -44,15 +50,6 @@
                             <option>남자</option>
                             <option>여자</option>
                         </select>
-                    </div>
-                    <div class="date-container">
-                        <input class="year-field" type="text" name="year" placeholder="년(4자)">
-                        <select id="select-month" name="month">
-                            <option selected>월</option>
-                            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
-                            <option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
-                        </select>
-                        <input class="day-field" type="text" name="day" placeholder="일">
                     </div>
                     <div class="box-container" id="sign-up-button-container">
                         <input id="sign-up-button" type="submit" value="완료">

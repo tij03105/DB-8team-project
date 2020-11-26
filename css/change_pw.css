@@ -30,29 +30,31 @@ header{
     width: 167px;
 }
 
-.main-nav {
+.sub-nav {
     grid-area: sb;
-    padding: 0 117px 0 40px;
+    padding: 0 100px 0 40px;
+    list-style-type: none;
 }
 
-.main-nav a {
+.sub-nav a {
     color: #F3F3F3;
     text-decoration: none;
     margin: 5px;
 }
 
-.main-nav a :hover {
+.sub-nav a :hover {
     color: #686868;
 }
 
-.account-menu {
+.account-menu, .manager-menu {
     padding-right: 16px;
     font-size: 16px;
     cursor: pointer;
 }
 
-.main-nav li {
+.sub-nav li {
     list-style: none;
+    float: left;
 }
 
 .menu-content {

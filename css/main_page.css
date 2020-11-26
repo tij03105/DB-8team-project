@@ -47,6 +47,7 @@ header{
 .sub-nav {
     grid-area: sb;
     padding: 0 100px 0 40px;
+    list-style-type: none;
 }
 
 .sub-nav a {
@@ -59,7 +60,7 @@ header{
     color: #686868;
 }
 
-.account-menu {
+.account-menu, .manager-menu {
     padding-right: 16px;
     font-size: 16px;
     cursor: pointer;
@@ -67,6 +68,7 @@ header{
 
 .sub-nav li {
     list-style: none;
+    float: left;
 }
 
 .menu-content {

@@ -34,15 +34,15 @@
         }
         else{
             rs.next();
-            String admin = rs.getString(9);
+            rs.getString(9);
             session.setAttribute("id", id);
-            session.setAttribute("pw", password);
             
             out.println("<script>");
             if(rs.wasNull()) {
-                session.setAttribute("admin", 1);
+                out.println("localStorage.setItem('admin', 'admin');");
                 out.println("alert('관리자계정으로 로그인 되었습니다.')");
-            } else session.setAttribute("admin", 0);
+            }
+            else out.println("localStorage.setItem('admin', 'customer');");
             out.println("location.href='../main_page.html'");
             out.println("</script>");
         }

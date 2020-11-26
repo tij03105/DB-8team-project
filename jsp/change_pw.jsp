@@ -29,7 +29,7 @@
         if(!password.equals(checkPass)){
             out.println("<script>");
             out.println("alert('비밀번호가 다릅니다.')");
-            out.println("location.href='../sign_up.html'");
+            out.println("location.href='../change_pw.html'");
             out.println("</script>");
             return;
         }
@@ -37,7 +37,7 @@
         if(password.length() > 20){
             out.println("<script>");
             out.println("alert('비밀번호는 20자리 이하입니다.')");
-            out.println("location.href='../sign_up.html'");
+            out.println("location.href='../change_pw.html'");
             out.println("</script>");
             return;
         }

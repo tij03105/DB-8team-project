@@ -59,14 +59,15 @@ header{
     color: #686868;
 }
 
-.account-menu {
+.account-menu, .manager-menu {
     padding-right: 16px;
     font-size: 16px;
     cursor: pointer;
 }
 
-.sub-nav li{
+.sub-nav li {
     list-style: none;
+    float: left;
 }
 
 .menu-content {

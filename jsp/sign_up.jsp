@@ -103,7 +103,7 @@
 
         if(job.length()>15){
             out.println("<script>");
-            out.println("alert('주소는 15자리이하입니다.')");
+            out.println("alert('직업은 15자리이하입니다.')");
             out.println("location.href='../sign_up.html'");
             out.println("</script>");
             return;

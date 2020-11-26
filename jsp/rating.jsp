@@ -7,6 +7,7 @@
 <head>
   <meta charset="utf-8">
   <title>rating_page</title>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/rating.css" />
 </head>
 <body>
@@ -25,6 +26,15 @@
       <a href="#mylist">Mylist</a>
     </nav>
     <nav class="sub-nav">
+      <li class="dropdown">
+        <div class="manager-menu">Manage</div>
+        <div class="menu-content">
+          <a href="">모든평가내역 확인</a>
+          <a href="">영상올리기</a>
+          <a href="">영상수정</a>
+          <a href="">회원등급 변경</a>
+        </div>
+      </li>
       <li class="dropdown">
         <div class="account-menu">Account</div>
         <div class="menu-content">
@@ -116,4 +126,12 @@
 
   </div>
 </body>
+<script>
+    $(document).ready(function(){
+      var admin = localStorage.getItem("admin");
+      if(admin == 'customer'){
+        $(".manager-menu").css("display","none");
+      }
+    });
+</script>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post" action="movieDB.jsp">
+	 * 제목으로 검색 * <br>
+	검색할 제목 : <input type= "text" name="name">  <input type="submit" value="검색">
+	
+	<br><br> **조건으로 검색** : <br>
+	버전 선택 <br> 
+	<input type="checkbox" name="version" value="" checked="checked">상관없음
+	<input type="checkbox" name="version" value="SP">SP
+	<input type="checkbox" name="version" value="KR">KR
+	<input type="checkbox" name="version" value="CN">CN
+	<input type="checkbox" name="version" value="RU">RU
+	<input type="checkbox" name="version" value="JP">JP
+	<input type="checkbox" name="version" value="UA">UA
+	<input type="checkbox" name="version" value="IN">IN
+	<input type="checkbox" name="version" value="AU">AU
+	<br><br>
+	
+	영상물 타입 선택 <br>
+	<select name="movie_type">
+    <option value="movie">movie</option>
+    <option value="tv_series">tv series</option>
+    <option value="knuMovieDB_Original">knuMovieDB Original</option>
+	</select>
+	<br><br>
+	
+	장르 선택 <br>
+	<input type="checkbox" name="genre" value="" checked="checked">상관없음
+	<input type="checkbox" name="genre" value="Action">Action
+	<input type="checkbox" name="genre" value="Comedy">Comedy
+	<input type="checkbox" name="genre" value="Romance">Romance
+	<input type="checkbox" name="genre" value="Horror">Horror
+	<input type="checkbox" name="genre" value="Drama">Drama
+	<br><br>
+	
+	
+	영상물 Runtime의 범위 <br>
+	<select name="min">
+	<option value="0">0</option>
+	<option value="30">30</option>
+	<option value="60">60</option>
+	<option value="direct">90</option>
+	</select>
+	 ~ 
+	<select name="max">
+	<option value="30">30</option>
+	<option value="60">60</option>
+	<option value="90">90</option>
+	<option value="direct">120</option>
+	</select>
+	
+	<input type="submit" value="조건으로 검색">
+	
+	</form>
+</body>
+</html>

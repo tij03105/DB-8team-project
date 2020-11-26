@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>change_pw</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" type="text/css" href="css/change_pw.css" />
 </head>
 <body>
@@ -50,4 +51,12 @@
     <div class="footer">
     </div>
 </body>
+<script>
+    $(document).ready(function(){
+      var admin = localStorage.getItem("admin");
+      if(admin == 'customer'){
+        $(".manager-menu").css("display","none");
+      }
+    });
+  </script>
 </html>

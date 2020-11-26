@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@page language="java" import="java.text.*, java.sql.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -18,19 +18,19 @@
 	Statement stmt = null;
 	ResultSet rs = null;
 	String sql = "";
-	//¾Õ¿¡¼­ ÀÔ·ÂÇÑ °ªÀ» °¡Á®¿À±â À§ÇØ¼­ ¸ÕÀú ¼±¾ğÀ» ÇØÁİ´Ï´Ù.
+	//ì•ì—ì„œ ì…ë ¥í•œ ê°’ì„ ê°€ì ¸ì˜¤ê¸° ìœ„í•´ì„œ ë¨¼ì € ì„ ì–¸ì„ í•´ì¤ë‹ˆë‹¤.
 	String title;
 %>
 
 <%
-//Àü È­¸éÀ¸·ÎºÎÅÍ form¹®À» ÅëÇØ¼­ nameÀ» ¹Ş¾Æ¿À´Â ¼Ò½º°¡ ÀÖ½À´Ï´Ù.
+//ì „ í™”ë©´ìœ¼ë¡œë¶€í„° formë¬¸ì„ í†µí•´ì„œ nameì„ ë°›ì•„ì˜¤ëŠ” ì†ŒìŠ¤ê°€ ìˆìŠµë‹ˆë‹¤.
 	title = request.getParameter("name");
 
 	
 	if(title==null||title.trim().equals("")){
 		%>
 			<script type="text/javascript">
-				alert("Á¶°ÇÀ¸·Î °Ë»öÇÕ´Ï´Ù.");
+				alert("ì¡°ê±´ìœ¼ë¡œ ê²€ìƒ‰í•©ë‹ˆë‹¤.");
 				sql = "select tconst, title from MOVIE where ";
 				//history.back();
 			</script>
@@ -40,21 +40,21 @@
 		sql = "select tconst, title from MOVIE where title LIKE '%" + title + "%'";
 	}
 	
-	// µ¥ÀÌÅÍ º£ÀÌ½º ¿¬°á
+	// ë°ì´í„° ë² ì´ìŠ¤ ì—°ê²°
 	try {
 		Class.forName(driver);
-		//DB¿¡ Á¢¼ÓÀ» ÇÑ´Ù.
+		//DBì— ì ‘ì†ì„ í•œë‹¤.
 		conn = DriverManager.getConnection(url,id,pw);
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
 		ResultSetMetaData rsmd = rs.getMetaData();
-		//ÇØ´ç °ªÀÇ °³¼ö¸¦ °¡Á®¿É´Ï´Ù.
-		//rs¿¡¼­ °ªÀ» °¡Á®¿Ã ¶§¿¡´Â Å¸ÀÔ¿¡ ¸Â°Ô getString, getInt Ã³·³ °¡Á®¿Ã ¼ö ÀÖ´Ù.
+		//í•´ë‹¹ ê°’ì˜ ê°œìˆ˜ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤.
+		//rsì—ì„œ ê°’ì„ ê°€ì ¸ì˜¬ ë•Œì—ëŠ” íƒ€ì…ì— ë§ê²Œ getString, getInt ì²˜ëŸ¼ ê°€ì ¸ì˜¬ ìˆ˜ ìˆë‹¤.
 
 		System.out.println(sql);
 		
 		if(!rs.next()){
-			System.out.println("°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
 		}
 		out.println("<table>");
 		

@@ -99,6 +99,7 @@ header{
     border-radius: 4px;
     padding: 60px 68px 40px 68px;
     margin-bottom: 90px;
+    margin-top:150px;
 }
 
 #change-pw-form {
@@ -163,4 +164,13 @@ header{
     text-align: center;
     padding: 0;
     font-size: 16px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #363636 inset ;
+    -webkit-text-fill-color: #ffffff; 
+} 
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+     transition: background-color 5000s ease-in-out 0s; 
 }

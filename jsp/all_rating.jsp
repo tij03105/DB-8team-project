@@ -29,10 +29,10 @@
       <li class="dropdown">
         <div class="manager-menu">Manage</div>
         <div class="menu-content">
-          <a href="">모든평가내역 확인</a>
+          <a href="all_rating.jsp">모든평가내역 확인</a>
           <a href="">영상올리기</a>
           <a href="">영상수정</a>
-          <a href="change_mbship.html">회원등급 변경</a>
+          <a href="../change_mbship.html">회원등급 변경</a>
         </div>
       </li>
       <li class="dropdown">
@@ -133,12 +133,4 @@
 
   </div>
 </body>
-<script>
-    $(document).ready(function(){
-      var admin = localStorage.getItem("admin");
-      if(admin == 'customer'){
-        $(".manager-menu").css("display","none");
-      }
-    });
-  </script>
 </html>

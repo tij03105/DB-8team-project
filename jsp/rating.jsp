@@ -39,7 +39,7 @@
         <div class="menu-content">
           <a href="all_rating.jsp">모든평가내역 확인</a>
           <a href="">영상올리기</a>
-          <a href="">영상수정</a>
+          <a href="change_movie.jsp">영상수정</a>
           <a href="../change_mbship.html">회원등급 변경</a>
         </div>
       </li>

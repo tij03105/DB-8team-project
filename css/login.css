@@ -52,12 +52,13 @@ body {
     display: block;
     background-color: rgba(0, 0, 0, 0.7);
     width: 314px;
-    height: 575.33px;
+    height: 475.33px;
     left: 50vw;
     margin-left: -233.5px;
     border-radius: 4px;
     padding: 60px 68px 40px 68px;
     margin-bottom: 90px;
+    margin-top:150px;
 }
 
 #login-form {

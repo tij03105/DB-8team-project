@@ -129,18 +129,18 @@ tbody tr:nth-child(even){
     color: black;
 }
 
-    td.title{
-        text-align: center;
-    }
-    td.avRating{
-       text-align:right;
-    }
-    td.myRating{
-        text-align:right;
-    }
-    td.userRating{
-        text-align:right;
-    }
-    td.userId{
-        text-align:center;
-    }
+td.title{
+    text-align: center;
+}
+td.avRating{
+    text-align:right;
+}
+td.myRating{
+    text-align:right;
+}
+td.userRating{
+    text-align:right;
+}
+td.userId{
+    text-align:center;
+}

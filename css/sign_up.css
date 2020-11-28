@@ -137,7 +137,7 @@ body {
     border-color:#363636;
     color:#ffffff;
     font-family: inherit;
-    background: url('/img/arrow.jpg') no-repeat 100% 0%;
+    background: url('../img/arrow.jpg') no-repeat 100% 0%;
     background-size: 50px;
     background-color: #363636;
     -webkit-appearance: none;

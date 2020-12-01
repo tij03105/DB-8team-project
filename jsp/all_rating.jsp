@@ -10,6 +10,16 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/rating.css" />
 </head>
+<script>
+    $(document).ready(function(){
+      var admin = localStorage.getItem("admin");
+      if(admin == null)
+        location.href='../index.html';
+      if(admin == 'customer'){
+        $(".manager-menu").css("display","none");
+      }
+    });
+</script>
 <body>
   <header>
     <div class="logo">

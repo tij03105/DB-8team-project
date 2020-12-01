@@ -107,6 +107,15 @@
     </div>
     </body>
     <script>
+        $(document).ready(function(){
+        var admin = localStorage.getItem("admin");
+        if(admin == null)
+            location.href='../index.html';
+        if(admin == 'customer'){
+            $(".manager-menu").css("display","none");
+        }
+        });
+
         window.onload=function(){
             document.getElementById("search-button").onclick=function(){
                 var tconst = document.getElementById("tconst").value;

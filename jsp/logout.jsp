@@ -6,10 +6,11 @@
     <body>
         <%
             session.invalidate();
-            out.println("<script>");
-            out.println("alert('로그아웃 되었습니다.')");
-            out.println("location.href='../index.html'");
-            out.println("</script>");
         %>
+        <script>
+            localStorage.clear();
+            alert('로그아웃 되었습니다.');
+            location.href='../index.html';
+        </script>
     </body>
 </html>

@@ -43,7 +43,7 @@
                 out.println("alert('관리자계정으로 로그인 되었습니다.')");
             }
             else out.println("localStorage.setItem('admin', 'customer');");
-            out.println("location.href='../main_page.html'");
+            out.println("location.href='main_page.jsp'");
             out.println("</script>");
         }
 	%>

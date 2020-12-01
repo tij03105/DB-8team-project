@@ -83,7 +83,7 @@
             stmt.executeQuery(sql);
             out.println("<script>");
             out.println("alert('영상물 등록이 완료되었습니다.')");
-            out.println("location.href='../main_page.html'");
+            out.println("location.href='main_page.jsp'");
             out.println("</script>");
         }
         else{

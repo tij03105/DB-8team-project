@@ -4,7 +4,7 @@
 <html>
     <head>
     <meta charset="utf-8">
-    <title>change_movie</title>
+    <title>upload_movie</title>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/change_movie.css" />
     </head>
@@ -58,20 +58,12 @@
     </header>
     <div class="main">
         <div id="container">
-            <form id="form" class="change-movie-form" action="change_mbship_act.jsp" method="post">
+            <form id="form" class="upload-movie-form" action="upload_movie_act.jsp" method="post">
                 <div class="label-container">
-                    <h2 id="change-movie-text">영상물 수정</h2>
-                </div>
-                <div class="id-container">
-                    <div class="id-container-input">
-                        <input class="input-field-id" type="text" id="tconst" name="tconst" placeholder="*영상물 번호" required>
-                    </div>
-                    <div class="id-container-button"> 
-                        <button type="button" id="search-button">조회</button>
-                    </div>
+                    <h2 id="change-movie-text">영상물 등록</h2>
                 </div>
                 <div class="box-container">
-                    <input class="input-field" type="text" name="title" placeholder="제목">
+                    <input class="input-field" type="text" name="title" placeholder="제목(필수 입력)" required>
                 </div>
                 <div class="box-container">
                     <input class="input-field" type="text" name="type" placeholder="타입">
@@ -84,14 +76,14 @@
                         </select>
                 </div>
                 <div class="box-container">
-                    <input class="input-field" type="text" name="date" placeholder="방송년도(YYYYMMDD)">
+                    <input class="input-field" type="text" name="date" placeholder="방송년도/개봉일(YYYYMMDD)">
                 </div>
                 <div class="box-container">
-                    <input class="input-field" type="text" name="runtime" placeholder="길이">
+                    <input class="input-field" type="text" name="runtime" placeholder="상영시간(분단위)">
                 </div>
                 <div class="select-container">
-                        <select id="select-genre" name="genre">
-                            <option selected value="">장르</option>
+                        <select id="select-genre" name="genre" required>
+                            <option selected value="">장르(필수 선택)</option>
                             <%
                                 while(rs.next()){
                                     out.println("<option value=" + rs.getString(1) + ">" + rs.getString(2) + "</option>");
@@ -106,21 +98,4 @@
         </div>
     </div>
     </body>
-    <script>
-        window.onload=function(){
-            document.getElementById("search-button").onclick=function(){
-                var tconst = document.getElementById("tconst").value;
-                if(tconst.trim() == '' || tconst == null){
-                    alert('영상물 번호를 입력하세요.');
-                }
-                else{
-                    window.open("about:blank", "winName", "width=400,height=300,top=100,left=200");
-                    var fr = document.getElementById("form");
-                    fr.action = "movie_search.jsp";
-                    fr.target = "winName";
-                    fr.submit();
-                }
-            }
-        }
-    </script>
 </html>

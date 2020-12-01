@@ -23,18 +23,10 @@
 <body>
   <header>
     <div class="logo">
-      <a href="../main_page.html">
+      <a href="main_page.jsp">
       <img id="logo" src="../img/logo.png">
     </a>
     </div>
-    <nav class="main-nav">
-      <a href="#recommend">Recommend</a>
-      <a href="#action">Action</a>
-      <a href="#comedy">Comedy</a>
-      <a href="#romance">Horror</a>
-      <a href="#drama">Drama</a>
-      <a href="#mylist">Mylist</a>
-    </nav>
     <nav class="sub-nav">
       <li class="dropdown">
         <div class="manager-menu">Manage</div>

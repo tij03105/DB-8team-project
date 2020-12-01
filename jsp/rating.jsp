@@ -13,6 +13,8 @@
 <script>
     $(document).ready(function(){
       var admin = localStorage.getItem("admin");
+      if(admin == null)
+        location.href='../index.html';
       if(admin == 'customer'){
         $(".manager-menu").css("display","none");
       }

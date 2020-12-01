@@ -8,6 +8,17 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/change_movie.css" />
     </head>
+    <script>
+  $(document).ready(function(){
+    var admin = localStorage.getItem("admin");
+    if(admin == null){
+      location.href='../index.html';
+    }
+    if(admin == 'customer'){
+      $(".manager-menu").css("display","none");
+    }
+  });
+</script>
     <body>
     <%
         String serverIP = "localhost";
@@ -30,7 +41,7 @@
     %>
     <header>
         <div class="logo">
-            <a href="../main_page.html">
+            <a href="main_page.jsp">
             <img id="logo" src="../img/logo.png">
             </a>
         </div>

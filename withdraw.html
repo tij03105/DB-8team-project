@@ -58,10 +58,13 @@
 </body>
 <script>
     $(document).ready(function(){
-      var admin = localStorage.getItem("admin");
-      if(admin == 'customer'){
-        $(".manager-menu").css("display","none");
-      }
+        var admin = localStorage.getItem("admin");
+        if(admin == null){
+            location.href='index.html';
+        }
+        if(admin == 'customer'){
+            $(".manager-menu").css("display","none");
+        }
     });
   </script>
 </html>

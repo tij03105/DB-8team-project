@@ -30,7 +30,7 @@
     %>
     <header>
         <div class="logo">
-            <a href="../main_page.html">
+            <a href="main_page.jsp">
             <img id="logo" src="../img/logo.png">
             </a>
         </div>

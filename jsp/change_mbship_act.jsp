@@ -86,7 +86,7 @@
             rs = pstmt.executeQuery();
             out.println("<script>");
             out.println("alert('변경이 완료되었습니다.')");
-            out.println("location.href='../main_page.html'");
+            out.println("location.href='main_page.jsp'");
             out.println("</script>");
         }
         else{

@@ -73,6 +73,19 @@
     </nav>
   </header>
   <div class="main">
+    <div class="search-section">
+        <form class="search-form" method="POST" action="movieDB.jsp">
+            <div class="label-container">
+                <h2 id="search-text">검색</h2>
+            </div>
+            <div class="box-container">
+                <input class="input-field" type="text" name="name" placeholder="이름" required>
+            </div>
+            <div class="box-container" id="search-button-container">
+                <input id="search-button" type="submit" value="검색">
+            </div>
+        </form>
+    </div>
     <div class="table-title">
         <h1 id="Recommend">Recommend</h1>
     </div>

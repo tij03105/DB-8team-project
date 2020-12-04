@@ -67,7 +67,7 @@
         stmt = conn.createStatement();
 
         request.setCharacterEncoding("UTF-8");
-        String tconst = (String)session.getAttribute("tconst");
+        String tconst = request.getParameter("tconst");
         String title;
         String type;
         String is_adult;

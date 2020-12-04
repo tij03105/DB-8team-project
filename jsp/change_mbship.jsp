@@ -52,7 +52,7 @@
         rs = pstmt.executeQuery();
         out.println("<script>");
         out.println("alert('회원 등급변경이 완료되었습니다.')");
-        out.println("location.href='../main_page.html'");
+        out.println("location.href='../jsp/main_page.jsp'");
         out.println("</script>");
     %>
     </body>

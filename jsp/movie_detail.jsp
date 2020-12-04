@@ -67,6 +67,7 @@
         stmt = conn.createStatement();
 
         request.setCharacterEncoding("UTF-8");
+        String sql;
         String tconst = request.getParameter("tconst");
         String title;
         String type;
@@ -79,14 +80,14 @@
         String[] actor_primary_name;
         String[] crew_type;
         String[] crew_name;
-        int count_actor;
-        int count_crew;
+        int count_actor = 0;
+        int count_crew = 0;
         int i;
         try {
-            String sql = "select m.title, m.title_type, m.is_adult, m.start_year, m.runtime_minutes, g.genre, r.AVERAGE_RATING
-                    from movie m, genre g, rating r where m.TCONST = '"+ tconst +"' and g.GENRE_CODE = m.GCODE and r.TCON = m.TCONST";
+            sql = "select m.title, m.title_type, m.is_adult, m.start_year, m.runtime_minutes, g.genre, r.AVERAGE_RATING "
+                    +"from movie m, genre g, rating r where m.TCONST = '"+ tconst +"' and g.GENRE_CODE = m.GCODE and r.TCON = m.TCONST";
             rs = stmt.executeQuery(sql);
-            rs.next()
+            rs.next();
             title = rs.getString(1);
             type = rs.getString(2);
             is_adult = rs.getString(3);
@@ -95,16 +96,33 @@
             genre = rs.getString(6);
             av_rating = rs.getFloat(7);
 
+            sql = "select count(a.name) from movie m, actor a, participates p "
+                    + "where m.TCONST = '" + tconst + "' and p.TCON = m.TCONST and p.NCON = a.NCONST";
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            count_actor = rs.getInt(1);
+            actor_name = new String[count_actor];
+            actor_primary_name = new String[count_actor];
+
             sql = "select a.name, a.primary_name from movie m, actor a, participates p "
-                    + "where m.TCONST = 't00000001' and p.TCON = m.TCONST and p.NCON = a.NCONST";
+                    + "where m.TCONST = '" + tconst + "' and p.TCON = m.TCONST and p.NCON = a.NCONST";
             rs = stmt.executeQuery(sql);
             i = 0;
             while(rs.next()){
                 actor_name[i] = rs.getString(1);
                 actor_primary_name[i++] = rs.getString(2);
             }
+
+            sql = "select count(c.name) from movie m, crew c, makes ma "
+                    + "where m.TCONST = '"+ tconst +"' and c.CREWID = ma.C_ID and ma.MTCON = m.tconst";
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            count_crew = rs.getInt(1);
+            crew_type = new String[count_crew];
+            crew_name = new String[count_crew];
+
             sql = "select c.crewtype, c.name from movie m, crew c, makes ma "
-                    + "where m.TCONST = 't00000001' and c.CREWID = ma.C_ID and ma.MTCON = m.tconst";
+                    + "where m.TCONST = '"+ tconst +"' and c.CREWID = ma.C_ID and ma.MTCON = m.tconst";
             rs = stmt.executeQuery(sql);
             i = 0;
             while(rs.next()){
@@ -132,12 +150,7 @@
                     <th class="genre"><%=genre%></th>
                     <th class="av_rating"><%=av_rating%></th>
                 </tr>
-        <%
-        }catch(SQLException ex) {
-            System.err.println("sql error = " + ex.getMessage());
-            System.exit(1);
-        }
-        %>
+        
         </tbody>
     </table>
 
@@ -148,7 +161,7 @@
                 <th class="actor_name">배우 이름</th>
                 <th class="actor_primary_name">주요작 배역</th>
             </tr>
-        <% for(i=0;i<count_rating;i++) { %>
+        <% for(i=0;i<count_actor;i++) { %>
             <tr class="findResult">
                 <td class="actor_name"><%=actor_name[i]%></th>
                 <td class="actor_primary_name"><%=actor_primary_name[i]%></th>
@@ -162,12 +175,16 @@
                 <th class="crew_type">역할</th>
                 <th class="crew_name">이름</th>
             </tr>
-        <% for(i=0;i<count_rating;i++) { %>
+        <% for(i=0;i<count_crew;i++) { %>
             <tr class="findResult">
                 <td class="crew_type"><%=crew_type[i]%></th>
                 <td class="crew_name"><%=crew_name[i]%></th>
             </tr>
-        <% } %>
+        <% } 
+        }catch(SQLException ex) {
+            System.err.println("sql error = " + ex.getMessage());
+            System.exit(1);
+        }%>
         </tbody>
     </table>
     

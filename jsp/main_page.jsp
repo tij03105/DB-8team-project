@@ -149,7 +149,7 @@
             int count = 0;
             rs = stmt.executeQuery(sql);
             while(rs.next()){
-              out.println("<tr id=" + rs.getString(1) + ">");
+              out.println("<tr class=\"table\" id=\"" + rs.getString(1) + "\">");
               out.println("<td class=\"text-left\">" + rs.getString(2) + "</th>");
               out.println("<td class=\"text-center\">" + rs.getString(3) + "</th>");
               out.println("<td class=\"text-center\">" + rs.getString(4) + "</th>");
@@ -183,7 +183,7 @@
           out.println("<tbody class=\"table-hover\">");
           rs = stmt.executeQuery(sql);
           while(rs.next()){
-              out.println("<tr id=" + rs.getString(1) + ">");
+              out.println("<tr class=\"table\" id=\"" + rs.getString(1) + "\">");
               out.println("<td class=\"text-left\">" + rs.getString(2) + "</th>");
               out.println("<td class=\"text-center\">" + rs.getString(3) + "</th>");
               out.println("<td class=\"text-center\">" + rs.getString(4) + "</th>");
@@ -217,7 +217,7 @@
              int myCount = 0;
              rs = stmt.executeQuery(sql);
              while(rs.next()){
-              out.println("<tr id=" + rs.getString(1) + ">");
+              out.println("<tr class=\"table\" id=\"" + rs.getString(1) + "\">");
               out.println("<td class=\"text-left\">" + rs.getString(2) + "</th>");
               out.println("<td class=\"text-center\">" + rs.getString(3) + "</th>");
               out.println("<td class=\"text-center\">" + rs.getString(4) + "</th>");
@@ -266,6 +266,10 @@
       break;
     }
     $("#rec-text").text(str);
+
+    $(".table").click(function() {
+      location.href="movie_detail.jsp?tconst="+$(this).attr('id');
+    });
   });
 </script>
 </html>

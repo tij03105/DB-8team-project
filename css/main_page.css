@@ -22,6 +22,7 @@ header{
     background-color: #141414;
     width: 100%;
     margin-bottom: 0px; 
+    z-index: 2;
 }
 
 #logo {
@@ -274,7 +275,7 @@ div.table-title {
 
 .input-field {
     position: relative;
-    width: 274px;
+    width: 1150px;
     height: 32px;
     border-radius: 4px;
     outline: 0 none;
@@ -301,6 +302,7 @@ div.table-title {
 
 .search-section {
     margin-bottom: 50px;
+    z-index: 1;
 }
 
 input:-webkit-autofill {

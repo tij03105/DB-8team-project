@@ -86,22 +86,82 @@
             </div>
         </form>
     </div>
-    <div class="table-title">
-        <h1 id="Recommend">Recommend</h1>
+    <div class="recommend">
+      <div class="table-title">
+          <h1 id="Recommend">Recommend</h1>
+          <h1 id="rec-text"><h1>
+      </div>
+      <table class="table-fill">
+      <thead>
+          <tr>
+              <th class="text-left">영화 제목</th>
+              <th class="text-center">영화 타입</th>
+              <th class="text-center">성인물 여부</th>
+              <th class="text-center">상영 시간</th>
+              <th class="text-center">평점</th>
+          </tr>
+      </thead>
+      <tbody class="table-hover">
+        <%
+            String id = (String)session.getAttribute("id");
+            sql = "SELECT Sex, Bdate FROM ACCOUNT WHERE ID = '" + id + "'";
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            String sex = rs.getString(1);
+            String bdate = rs.getString(2);
+            int type = 0;
+            /* 성별과 나이가 없는 아이디의 경우 */
+            if(sex == null && bdate == null){
+              sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM RATING, MOVIE WHERE Tconst = Tcon AND R_ID IN " + 
+              "(SELECT R_ID FROM PROVIDES GROUP BY R_ID HAVING COUNT(*) >= 5) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
+              type = 1;
+            }
+            /* 성별은 존재하고 나이가 없는 아이디의 경우 */
+            else if(bdate == null){
+              sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM MOVIE, RATING R WHERE Tconst = Tcon AND R.R_ID IN " +
+              "(SELECT DISTINCT R_ID FROM ACCOUNT, PROVIDES P WHERE Sex = '" + sex + "' AND ID = A_ID) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
+              type = 2;
+            }
+            /* 나이는 존재하고 성별은 없는 아이디의 경우 */
+            else if(sex == null){
+              Calendar cal = Calendar.getInstance();
+              int year = cal.get(Calendar.YEAR);
+              bdate = bdate.substring(0,4);
+              int age = 2020 - Integer.parseInt(bdate) + 1;
+              age = age/10*10; // 연령대를 구한다. ex) 20대
+              int lowAge = age - 1, highAge = age + 8;
+              sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM MOVIE, RATING R WHERE Tconst = Tcon AND R.R_ID IN " +
+              "(SELECT DISTINCT R_ID FROM ACCOUNT, PROVIDES P WHERE bdate BETWEEN TO_DATE('" + (year - highAge) + "-01-01', 'YYYY-MM-DD') AND TO_DATE('" + (year - lowAge) + "-12-31', 'YYYY-MM-DD') AND ID = A_ID) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
+              type = 3;
+            }
+            /* 나이와 성별이 모두 존재하는 아이디의 경우 */
+            else {
+              Calendar cal = Calendar.getInstance();
+              int year = cal.get(Calendar.YEAR);
+              bdate = bdate.substring(0,4);
+              int age = 2020 - Integer.parseInt(bdate) + 1;
+              age = age/10*10; // 연령대를 구한다. ex) 20대
+              int lowAge = age - 1, highAge = age + 8;
+              sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM MOVIE, RATING R WHERE Tconst = Tcon AND R.R_ID IN " +
+              "(SELECT DISTINCT R_ID FROM ACCOUNT, PROVIDES P WHERE Sex = '" + sex + "' AND bdate BETWEEN TO_DATE('" + (year - highAge) + "-01-01', 'YYYY-MM-DD') AND TO_DATE('" + (year - lowAge) + "-12-31', 'YYYY-MM-DD') AND ID = A_ID) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
+              type = 4;
+            }
+            int count = 0;
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+              out.println("<tr id=" + rs.getString(1) + ">");
+              out.println("<td class=\"text-left\">" + rs.getString(2) + "</th>");
+              out.println("<td class=\"text-center\">" + rs.getString(3) + "</th>");
+              out.println("<td class=\"text-center\">" + rs.getString(4) + "</th>");
+              out.println("<td class=\"text-center\">" + rs.getInt(5) + "</th>");
+              out.println("<td class=\"text-center\">" + rs.getDouble(6) + "</th>");
+              out.println("</tr>");
+              count++;
+            }
+        %>
+      </tbody>
+      </table>
     </div>
-    <table class="table-fill">
-    <thead>
-        <tr>
-            <th class="text-left">영화 제목</th>
-            <th class="text-center">영화 타입</th>
-            <th class="text-center">성인물 여부</th>
-            <th class="text-center">상영 시간</th>
-            <th class="text-center">평점</th>
-        </tr>
-    </thead>
-    <tbody class="table-hover">
-    </tbody>
-    </table>
     <%
         for(int i=0;i<genre.size();i++){
           out.println("<div class=\"table-title\">");
@@ -151,11 +211,10 @@
         </thead>
         <tbody class="table-hover">
         <%
-            String id = (String)session.getAttribute("id");
             sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM RATING R, MOVIE, PROVIDES P " +
              "WHERE A_Id = '" + id + "' AND R.R_ID = P.R_ID AND Tcon = Tconst) WHERE rownum BETWEEN 1 AND 5";
 
-             int count = 0;
+             int myCount = 0;
              rs = stmt.executeQuery(sql);
              while(rs.next()){
               out.println("<tr id=" + rs.getString(1) + ">");
@@ -165,7 +224,7 @@
               out.println("<td class=\"text-center\">" + rs.getInt(5) + "</th>");
               out.println("<td class=\"text-center\">" + rs.getDouble(6) + "</th>");
               out.println("</tr>");
-              count++;
+              myCount++;
             }
         %>
         </tbody>
@@ -185,8 +244,28 @@
       $(".manager-menu").css("display","none");
     }
     if(<%=count%> == 0){
+        $(".recommend").css("display","none");
+    }
+    if(<%=myCount%> == 0){
         $(".mylist").css("display","none");
     }
+
+    var str = "";
+    switch(<%=type%>){
+      case 1:
+      str = "평가가 많은 영화 TOP5";
+      break;
+      case 2:
+      str = "같은 성별의 회원들이 평가한 영화 TOP5";
+      break;
+      case 3:
+      str = "같은 나이대의 회원들이 평가한 영화 TOP5";
+      break;
+      case 4:
+      str = "같은 성별, 나이대의 회원들이 평가한 영화 TOP5";
+      break;
+    }
+    $("#rec-text").text(str);
   });
 </script>
 </html>

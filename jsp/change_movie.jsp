@@ -128,6 +128,7 @@
                     fr.action = "movie_search.jsp";
                     fr.target = "winName";
                     fr.submit();
+                    fr.action = "change_mbship_act.jsp";
                 }
             }
         }

@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="movieDB.jsp">
+	<form method="post" action="search_detail.jsp">
 	 * 제목으로 검색 * <br>
 	검색할 제목 : <input type= "text" name="name">  <input type="submit" value="검색">
 	
@@ -32,11 +32,11 @@
 	
 	장르 선택 <br>
 	<input type="checkbox" name="genre" value="" checked="checked">상관없음
-	<input type="checkbox" name="genre" value="Action">Action
-	<input type="checkbox" name="genre" value="Comedy">Comedy
-	<input type="checkbox" name="genre" value="Romance">Romance
-	<input type="checkbox" name="genre" value="Horror">Horror
-	<input type="checkbox" name="genre" value="Drama">Drama
+	<input type="checkbox" name="genre" value="g00000001">Action
+	<input type="checkbox" name="genre" value="g00000002">Comedy
+	<input type="checkbox" name="genre" value="g00000003">Romance
+	<input type="checkbox" name="genre" value="g00000004">Horror
+	<input type="checkbox" name="genre" value="g00000005">Drama
 	<br><br>
 	
 	
@@ -45,14 +45,14 @@
 	<option value="0">0</option>
 	<option value="30">30</option>
 	<option value="60">60</option>
-	<option value="direct">90</option>
+	<option value="90">90</option>
 	</select>
 	 ~ 
 	<select name="max">
 	<option value="30">30</option>
 	<option value="60">60</option>
 	<option value="90">90</option>
-	<option value="direct">120</option>
+	<option value="120">120</option>
 	</select>
 	
 	<input type="submit" value="조건으로 검색">

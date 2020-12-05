@@ -286,9 +286,13 @@ div.table-title {
     background-color: transparent;
 }
 
+#search-button-container{
+  background-color: transparent;
+}
+
 #search-button {
     position: relative;
-    width: 100%;
+    width: 49%;
     height: 100%;
     border-width: 0;
     border-radius: 4px;
@@ -298,6 +302,22 @@ div.table-title {
     text-align: center;
     padding: 0;
     font-size: 16px;
+    margin-right: 9px;
+}
+
+#detail-search-button {
+  position: relative;
+  width: 49%;
+  height: 100%;
+  border-width: 0;
+  border-radius: 4px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 0;
+  font-size: 16px;
+  margin-left: 9px;
 }
 
 .search-section {

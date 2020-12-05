@@ -119,15 +119,23 @@ header{
     color: gray;
 }
 table{
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    overflow-x: auto;
+    overflow-y: hidden;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
 
 }
-tbody tr:nth-child(even){
-    background-color: gray;
-    color: black;
-}
+tbody
+{display:flex}
+
+th,td{
+    margin :20px;
+    display:block}
+
 
 td.title{
     text-align: center;

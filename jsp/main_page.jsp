@@ -74,7 +74,7 @@
   </header>
   <div class="main">
     <div class="search-section">
-        <form class="search-form" method="POST" action="movieDB.jsp">
+        <form class="search-form" method="POST" action="search_detail.jsp">
             <div class="label-container">
                 <h2 id="search-text">검색</h2>
             </div>
@@ -95,8 +95,8 @@
       <table class="table-fill">
       <thead>
           <tr>
-              <th class="text-left">영화 제목</th>
-              <th class="text-center">영화 타입</th>
+              <th class="text-left">영상 제목</th>
+              <th class="text-center">영상 타입</th>
               <th class="text-center">성인물 여부</th>
               <th class="text-center">상영 시간</th>
               <th class="text-center">평점</th>
@@ -174,8 +174,8 @@
             "WHERE Gcode = '" + gCode.get(i) + "' AND Tconst = Tcon AND P.A_ID <> '" + id + "' AND P.R_ID = R.R_ID ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
           
           out.println("<tr>");
-          out.println("<th class=\"text-left\">영화 제목</th>");
-          out.println("<th class=\"text-center\">영화 타입</th>");
+          out.println("<th class=\"text-left\">영상 제목</th>");
+          out.println("<th class=\"text-center\">영상 타입</th>");
           out.println("<th class=\"text-center\">성인물 여부</th>");
           out.println("<th class=\"text-center\">상영 시간</th>");
           out.println("<th class=\"text-center\">평점</th>");
@@ -203,8 +203,8 @@
         <table class="table-fill">
         <thead>
             <tr>
-                <th class="text-left">영화 제목</th>
-                <th class="text-center">영화 타입</th>
+                <th class="text-left">영상 제목</th>
+                <th class="text-center">영상 타입</th>
                 <th class="text-center">성인물 여부</th>
                 <th class="text-center">상영 시간</th>
                 <th class="text-center">평점</th>

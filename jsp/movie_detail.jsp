@@ -214,8 +214,6 @@
         }%>
         </tbody>
     </table>
-    
-  </div>
   <h1 class="title">평가하기</h1>
   <h3>점수를 기입해주세요 (0.0 ~ 10.0)</h3>
   <form id="form" class="rating-form" action="rating_act.jsp" method="post">
@@ -226,6 +224,8 @@
         <input id="rating_button" type="submit" value="완료">
     </div>
   </form>
+  </div>
+  
   
 
 </body>

@@ -58,7 +58,7 @@
     </header>
     <div class="main">
         <div id="container">
-            <form id="form" class="change-movie-form" action="change_mbship_act.jsp" method="post">
+            <form id="form" class="change-movie-form" action="change_movie_act.jsp" method="post">
                 <div class="label-container">
                     <h2 id="change-movie-text">영상물 수정</h2>
                 </div>
@@ -128,7 +128,7 @@
                     fr.action = "movie_search.jsp";
                     fr.target = "winName";
                     fr.submit();
-                    fr.action = "change_mbship_act.jsp";
+                    fr.action = "change_movie_act.jsp";
                 }
             }
         }

@@ -163,6 +163,7 @@ header{
     text-align: center;
     padding: 0;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .select-container {
@@ -185,6 +186,7 @@ header{
     -moz-appearance: none;
     appearance: none;
     outline: none;
+    cursor: pointer;
 }
 
 input:-webkit-autofill {

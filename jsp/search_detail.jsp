@@ -3,11 +3,21 @@
 <%@page language="java" import="java.text.*, java.sql.*, java.util.ArrayList, java.util.InputMismatchException" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
+<h1>
 <meta charset="utf-8">
-<title>Insert title here</title>
-</head>
+<title>search_detail</title>
+
+</h1>
 <body>
+<h2>
+    <div class="logo">
+      <a href="main_page.jsp">
+      <img id="logo" src="../img/logo.png">
+      </a>
+    </div>
+
+	 <link rel="stylesheet" href="../css/search_detail.css" />
+	
 	
 <%!
 	String driver = "oracle.jdbc.driver.OracleDriver";
@@ -60,7 +70,7 @@
 	
 	String id = (String)session.getAttribute("id");
 	
-	sql = "SELECT DISTINCT tconst, title FROM MOVIE, GENRE, VERSION WHERE "
+	sql = "SELECT DISTINCT tconst , title FROM MOVIE, GENRE, VERSION WHERE "
            + "tconst NOT IN (SELECT tcon FROM RATING R, PROVIDES P WHERE A_ID = '" + id + "' AND P.R_ID = R.R_ID)";
 	sqlv = "SELECT DISTINCT VERSION.tcon, VERSION.original_title FROM MOVIE, GENRE, VERSION WHERE "
             + "tconst NOT IN (SELECT tcon FROM RATING R, PROVIDES P WHERE A_ID = '" + id + "' AND P.R_ID = R.R_ID)";
@@ -127,13 +137,15 @@
 		if ( genre.length == 1 && genre[0].equals("") ){ //상관없음 선택한 경우
 			
 		}else{ //장르을 선택한 경우 gnre.length만큼 각각 where문에서 조건을 반복 추가해야한다.
-			//action과 horror선택.
 			
-			for(j = 0; j < genre.length ; j++ ){ // 이부분도 sql에 account.ID조건이 없어서 AND를 안붙였지만 후에 AND 추가해야함.
+			for(j = 0; j < genre.length ; j++ ){ 
 				gCode = genre[j];
 				if(j == 0){//첫번째 부분
-					if( genre[j].equals("") ) gCode = genre[++j]; // 상관없음을 포함하여 조건입력시 무시하고 조건대로 입력받음
+					if( genre[j].equals("") ){
+						gCode = genre[++j]; // 상관없음을 포함하여 조건입력시 무시하고 조건대로 입력받음
+					}
 					sb.append(" AND (MOVIE.gCode = '" + gCode + "'");
+					gCnt++;
 				}else{
 					sb.append(" OR MOVIE.gCode = '" + gCode + "'");
 					gCnt++;
@@ -214,7 +226,7 @@
 	}
 
 %>
-
+ </h2>
 </body>
 </html>
 

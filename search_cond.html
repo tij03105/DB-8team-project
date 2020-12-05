@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>search_conditional</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/search_cond.css?" />
 </head>
 <script>
@@ -82,18 +83,18 @@
 					<input type="checkbox" name="genre" value="g00000005">Drama
 				</div>
 				<div class="label-container">
-					<h3 class="cond_ver">상영시간 범위선택</h3>
+					<h3 class="cond_ver">상영시간 범위선택(분)</h3>
 				</div>
 				<div class="flex-container">
 					<h4>최소</h4>
 					<div class="box-container">
-						<input class="input-field" type="text" name="min">
+						<input class="input-field" type="text" name="min" required>
 					</div>
 				</div>
 				<div class="flex-container">
 					<h4>최대</h4>
 					<div class="box-container">
-						<input class="input-field" type="text" name="max">
+						<input class="input-field" type="text" name="max" required>
 					</div>
 				</div>
 				<div class="box-container" id="change-movie-button-container">

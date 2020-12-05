@@ -83,6 +83,7 @@
             </div>
             <div class="box-container" id="search-button-container">
                 <input id="search-button" type="submit" value="검색">
+                <button id="detail-search-button" type="button">상세검색 페이지로 이동</button>
             </div>
         </form>
     </div>
@@ -113,13 +114,13 @@
             /* 성별과 나이가 없는 아이디의 경우 */
             if(sex == null && bdate == null){
               sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM RATING, MOVIE WHERE Tconst = Tcon AND R_ID IN " + 
-              "(SELECT R_ID FROM PROVIDES GROUP BY R_ID HAVING COUNT(*) >= 5) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
+              "(SELECT R_ID FROM PROVIDES WHERE A_ID <> '" + id + "' GROUP BY R_ID HAVING COUNT(*) >= 5) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
               type = 1;
             }
             /* 성별은 존재하고 나이가 없는 아이디의 경우 */
             else if(bdate == null){
               sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM MOVIE, RATING R WHERE Tconst = Tcon AND R.R_ID IN " +
-              "(SELECT DISTINCT R_ID FROM ACCOUNT, PROVIDES P WHERE Sex = '" + sex + "' AND ID = A_ID) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
+              "(SELECT DISTINCT R_ID FROM ACCOUNT, PROVIDES P WHERE ID <> '" + id + "' AND Sex = '" + sex + "' AND ID = A_ID) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
               type = 2;
             }
             /* 나이는 존재하고 성별은 없는 아이디의 경우 */
@@ -131,7 +132,7 @@
               age = age/10*10; // 연령대를 구한다. ex) 20대
               int lowAge = age - 1, highAge = age + 8;
               sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM MOVIE, RATING R WHERE Tconst = Tcon AND R.R_ID IN " +
-              "(SELECT DISTINCT R_ID FROM ACCOUNT, PROVIDES P WHERE bdate BETWEEN TO_DATE('" + (year - highAge) + "-01-01', 'YYYY-MM-DD') AND TO_DATE('" + (year - lowAge) + "-12-31', 'YYYY-MM-DD') AND ID = A_ID) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
+              "(SELECT DISTINCT R_ID FROM ACCOUNT, PROVIDES P WHERE ID <> '" + id + "' AND bdate BETWEEN TO_DATE('" + (year - highAge) + "-01-01', 'YYYY-MM-DD') AND TO_DATE('" + (year - lowAge) + "-12-31', 'YYYY-MM-DD') AND ID = A_ID) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
               type = 3;
             }
             /* 나이와 성별이 모두 존재하는 아이디의 경우 */
@@ -143,7 +144,7 @@
               age = age/10*10; // 연령대를 구한다. ex) 20대
               int lowAge = age - 1, highAge = age + 8;
               sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM MOVIE, RATING R WHERE Tconst = Tcon AND R.R_ID IN " +
-              "(SELECT DISTINCT R_ID FROM ACCOUNT, PROVIDES P WHERE Sex = '" + sex + "' AND bdate BETWEEN TO_DATE('" + (year - highAge) + "-01-01', 'YYYY-MM-DD') AND TO_DATE('" + (year - lowAge) + "-12-31', 'YYYY-MM-DD') AND ID = A_ID) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
+              "(SELECT DISTINCT R_ID FROM ACCOUNT, PROVIDES P WHERE Sex = '" + sex + "' AND ID <> '" + id + "' AND bdate BETWEEN TO_DATE('" + (year - highAge) + "-01-01', 'YYYY-MM-DD') AND TO_DATE('" + (year - lowAge) + "-12-31', 'YYYY-MM-DD') AND ID = A_ID) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
               type = 4;
             }
             int count = 0;
@@ -169,8 +170,8 @@
           out.println("</div>");
           out.println("<table class=\"table-fill\">");
           out.println("<thead>");
-          sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM RATING, MOVIE " +
-            "WHERE Gcode = '" + gCode.get(i) + "' AND Tconst = Tcon ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
+          sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM PROVIDES P, RATING R, MOVIE " +
+            "WHERE Gcode = '" + gCode.get(i) + "' AND Tconst = Tcon AND P.A_ID <> '" + id + "' AND P.R_ID = R.R_ID ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
           
           out.println("<tr>");
           out.println("<th class=\"text-left\">영화 제목</th>");
@@ -269,6 +270,10 @@
 
     $(".table").click(function() {
       location.href="movie_detail.jsp?tconst="+$(this).attr('id');
+    });
+
+    $("#detail-search-button").click(function(){
+      location.href="../search_cond.html";
     });
   });
 </script>

@@ -1,0 +1,52 @@
+html, body {
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #141414;
+    color: #F3F3F3;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    line-height: 1.4;
+}
+
+header{
+    padding: 20px 20px 0 20px;
+    position: fixed;
+    top: 0;
+    display: grid;  
+    grid-gap:5px;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas: 
+     "nt mn mn sb . . . "; 
+    background-color: #141414;
+    width: 100%;
+    margin-bottom: 0px; 
+}
+
+#logo {
+    height: auto;
+    width: 167px;
+}
+
+
+table{
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+body {
+	text-align: center;
+	 /* Quirks Mode 를 위한 가운데 정렬 */ 
+	 }
+
+ p {
+  text-align: left; /* 문자들의 가운데 정렬을 해제 */ 
+  width: 100px; margin: 0 auto; 
+  }

@@ -50,7 +50,7 @@
     </nav>
   </header>
   <div class="main">
-    <h1 class="rating">영상물 상세정보</h1>
+    <h1 class="detail_title">영상물 상세정보</h1>
         <%
         String serverIP = "localhost";
         String strSID = "orcl";

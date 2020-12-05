@@ -1,62 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Insert title here</title>
+	<meta charset="utf-8">
+	<title>search_conditional</title>
+	<link rel="stylesheet" type="text/css" href="../css/search_cond.css?" />
 </head>
+<script>
+    $(document).ready(function(){
+      var admin = localStorage.getItem("admin");
+      if(admin == null)
+        location.href='../index.html';
+      if(admin == 'customer'){
+        $(".manager-menu").css("display","none");
+      }
+    });
+</script>
 <body>
-	<form method="post" action="search_detail.jsp">
-	 * 제목으로 검색 * <br>
-	검색할 제목 : <input type= "text" name="name">  <input type="submit" value="검색">
-	
-	<br><br> **조건으로 검색** : <br>
-	버전 선택 <br> 
-	<input type="checkbox" name="version" value="" checked="checked">상관없음
-	<input type="checkbox" name="version" value="SP">SP
-	<input type="checkbox" name="version" value="KR">KR
-	<input type="checkbox" name="version" value="CN">CN
-	<input type="checkbox" name="version" value="RU">RU
-	<input type="checkbox" name="version" value="JP">JP
-	<input type="checkbox" name="version" value="UA">UA
-	<input type="checkbox" name="version" value="IN">IN
-	<input type="checkbox" name="version" value="AU">AU
-	<br><br>
-	
-	영상물 타입 선택 <br>
-	<select name="movie_type">
-    <option value="movie">movie</option>
-    <option value="tv_series">tv series</option>
-    <option value="knuMovieDB_Original">knuMovieDB Original</option>
-	</select>
-	<br><br>
-	
-	장르 선택 <br>
-	<input type="checkbox" name="genre" value="" checked="checked">상관없음
-	<input type="checkbox" name="genre" value="g00000001">Action
-	<input type="checkbox" name="genre" value="g00000002">Comedy
-	<input type="checkbox" name="genre" value="g00000003">Romance
-	<input type="checkbox" name="genre" value="g00000004">Horror
-	<input type="checkbox" name="genre" value="g00000005">Drama
-	<br><br>
-	
-	
-	영상물 Runtime의 범위 <br>
-	<select name="min">
-	<option value="0">0</option>
-	<option value="30">30</option>
-	<option value="60">60</option>
-	<option value="90">90</option>
-	</select>
-	 ~ 
-	<select name="max">
-	<option value="30">30</option>
-	<option value="60">60</option>
-	<option value="90">90</option>
-	<option value="120">120</option>
-	</select>
-	
-	<input type="submit" value="조건으로 검색">
-	
-	</form>
+  <header>
+    <div class="logo">
+      <a href="jsp/main_page.jsp">
+      <img id="logo" src="../img/logo.png">
+    </a>
+    </div>
+    <nav class="sub-nav">
+      <li class="dropdown">
+        <div class="manager-menu">Manage</div>
+        <div class="menu-content">
+          <a href="jsp/all_rating.jsp">모든평가내역 확인</a>
+          <a href="jsp/upload_movie.jsp">영상올리기</a>
+          <a href="jsp/change_movie.jsp">영상수정</a>
+          <a href="change_mbship.html">회원등급 변경</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <div class="account-menu">Account</div>
+        <div class="menu-content">
+          <a href="jsp/rating.jsp">내가내린평가</a>
+          <a href="change_pw.html">비밀번호변경</a>
+          <a href="change_info.html">개인정보수정</a>
+          <a href="withdraw.html">회원탈퇴</a>
+          <a href="jsp/logout.jsp">로그아웃</a>
+        </div>
+      </li>
+    </nav>
+  	</header>
+  	<div class="main">
+	  	<div id="container">
+		  	<form id="form" class="cond_form" method="post" action="jsp/search_detail.jsp">
+			  	<div class="label-container">
+					<h1 class="cond_title">조건검색</h1>
+					<h3 class="cond_ver">버전선택</h3>
+			  	</div>
+			  	<div class="checkbox-container">
+					<input type="checkbox" name="version" value="" checked="checked">상관없음
+					<input type="checkbox" name="version" value="SP">SP
+					<input type="checkbox" name="version" value="KR">KR
+					<input type="checkbox" name="version" value="CN">CN
+					<input type="checkbox" name="version" value="RU">RU
+					<input type="checkbox" name="version" value="JP">JP
+					<input type="checkbox" name="version" value="UA">UA
+					<input type="checkbox" name="version" value="IN">IN
+					<input type="checkbox" name="version" value="AU">AU
+				</div>
+				<div class="label-container">
+					<h3 class="cond_ver">타입선택</h3>
+			  	</div>
+				<div class="select-container">
+					<select id="select-type" name="movie_type">
+						<option value="movie">movie</option>
+						<option value="tv_series">tv series</option>
+						<option value="knuMovieDB_Original">knuMovieDB Original</option>
+					</select>
+				</div>
+				<div class="label-container">
+					<h3 class="cond_ver">장르선택</h3>
+				</div>
+				<div class="checkbox-container">
+					<input type="checkbox" name="genre" value="" checked="checked">상관없음
+					<input type="checkbox" name="genre" value="g00000001">Action
+					<input type="checkbox" name="genre" value="g00000002">Comedy
+					<input type="checkbox" name="genre" value="g00000003">Romance
+					<input type="checkbox" name="genre" value="g00000004">Horror
+					<input type="checkbox" name="genre" value="g00000005">Drama
+				</div>
+				<div class="label-container">
+					<h3 class="cond_ver">상영시간 범위선택</h3>
+				</div>
+				<div class="flex-container">
+					<h4>최소</h4>
+					<select id = "select-range" name="min">
+						
+						<option value="0">0</option>
+						<option value="30">30</option>
+						<option value="60">60</option>
+						<option value="90">90</option>
+					</select>
+				</div>
+				<div class="flex-container">
+					<h4>최대</h4>
+					<select id = "select-range" name="max">
+						<option value="30">30</option>
+						<option value="60">60</option>
+						<option value="90">90</option>
+						<option value="120">120</option>
+					</select>
+				</div>
+				<div class="box-container" id="change-movie-button-container">
+                    <input id="change-movie-button" type="submit" value="검색">
+                </div>
+			</form>
+	  	</div>
+  	</div>
 </body>
 </html>

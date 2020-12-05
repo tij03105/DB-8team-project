@@ -42,6 +42,8 @@
 	int Vcnt; // version 선택유무
 	int min = 0;
 	int max = 0;
+	
+	
 %>
 
 <%
@@ -87,23 +89,18 @@
 		//System.out.println("선택된 장르 개수 : " + genre.length);
 		int i;
 		
-		System.out.println("version.length : " + version.length);
-		//버전이 상관없음인 경우(1개 선택, 값이 null or "" ), 그렇지 않은경우(중복선택가능)
-		if ( version.length == 1 && version[0].equals("") ){ //상관없음 선택한 경우
+		//System.out.println("version.length : " + version.length);
+		
+		
+		
+		if ( version == null ){ //상관없음 선택한 경우
 			sb.append(sql);
 		}else{ //버전을 선택한 경우 version.length만큼 각각 where문에서 조건을 반복 추가해야한다.
 			sb.append(sqlv);
 		
-		
 			for(i = 0; i < version.length ; i++ ){
 				if(i == 0){//첫번째 부분
-					if( version[i].equals("")){
-						i++;
 						sb.append("AND (VERSION.nation = '" + version[i] + "'");
-					}
-					else{
-						sb.append("AND (VERSION.nation = '" + version[i] + "'");
-					}
 				}else{
 					sb.append("OR VERSION.nation = '" + version[i] + "'");
 				}
@@ -119,11 +116,11 @@
 			sb.append(" AND title_type = '" + movie_type + "'");
 			Ccnt++;
 		}
-		if ( movie_type.equals("tv series") ){ //movie선택
+		if ( movie_type.equals("tv_series") ){ //movie선택
 			sb.append(" AND title_type = '" + movie_type + "'");
 			Ccnt++;
 		}
-		if ( movie_type.equals("knuMovieDB Original") ){ //movie선택
+		if ( movie_type.equals("knuMovieDB_Original") ){ //movie선택
 			sb.append(" AND title_type = '" + movie_type + "'");
 			Ccnt++;
 		}
@@ -134,16 +131,13 @@
 		int j;
 		//상관없음인 경우, 그렇지 않은경우(중복선택가능)
 		//장르 상관없음인 경우(1개 선택, 값이 null or "" ), 그렇지 않은경우(중복선택가능)
-		if ( genre.length == 1 && genre[0].equals("") ){ //상관없음 선택한 경우
+
+		if ( genre == null ){
 			
-		}else{ //장르을 선택한 경우 gnre.length만큼 각각 where문에서 조건을 반복 추가해야한다.
-			
+		}else{
 			for(j = 0; j < genre.length ; j++ ){ 
 				gCode = genre[j];
 				if(j == 0){//첫번째 부분
-					if( genre[j].equals("") ){
-						gCode = genre[++j]; // 상관없음을 포함하여 조건입력시 무시하고 조건대로 입력받음
-					}
 					sb.append(" AND (MOVIE.gCode = '" + gCode + "'");
 					gCnt++;
 				}else{
@@ -151,7 +145,9 @@
 					gCnt++;
 				}
 			}
-			if(gCnt>0) sb.append(" )");
+			if(gCnt>0){
+				sb.append(" )");	
+			}
 		}
 		
 		

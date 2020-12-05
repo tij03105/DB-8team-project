@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>login</title>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
         <link rel="stylesheet" type="text/css" href="css/login.css">
     </head>   
     <body>
@@ -36,4 +37,11 @@
             </div>
         </div>
     </body>
+    <script>
+        $(document).ready(function(){
+          var admin = localStorage.getItem("admin");
+          if(admin != null)
+            location.href='jsp/main_page.jsp';
+        });
+      </script>
 </html>

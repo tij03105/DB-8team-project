@@ -127,6 +127,9 @@
 
         pstmt = conn.prepareStatement(sql);
         rs = pstmt.executeQuery();
+        stmt.close();
+        pstmt.close();
+        conn.close();
         out.println("<script>");
         out.println("alert('가입이 완료되었습니다.')");
         out.println("location.href='../index.html'");

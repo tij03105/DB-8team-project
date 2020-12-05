@@ -24,29 +24,16 @@ header{
     margin-bottom: 0px; 
 }
 
+
 #logo {
     height: auto;
     width: 167px;
 }
 
-.main-nav {
-    grid-area: mn;
-    padding: 0 30px 0 20px;
-}
-  
-.main-nav a {
-    color: #f3f3f3;
-    text-decoration: none;
-    margin: 5px;
-}
-
-.main-nav a :hover {
-    color:#686868;
-}
-
 .sub-nav {
     grid-area: sb;
     padding: 0 100px 0 40px;
+    list-style-type: none;
 }
 
 .sub-nav a {
@@ -89,35 +76,17 @@ header{
     display: block;
 }
 
-.main {
-    margin-top:50px;
-    padding: 50px;
-  }
-
-  .container {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(6, minmax(100px, 1fr));
-  }
-  
-  .container a {
-    transition: transform .3s;  
-  }
-  
-  .container a:hover {
-    transition: transform .3s;
-    -ms-transform: scale(1.4);
-    -webkit-transform: scale(1.4);  
-    transform: scale(1.4);
-  }
-  
-  .container img {
-    border-radius: 2px;
-  }
-
-.headResult{
-    color: gray;
+#main {
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    height: 1092.33px;
+    background-color: rgba(0, 0, 0, 0.6);
 }
+
 table{
     display: flex;
     display: -webkit-box;

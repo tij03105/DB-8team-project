@@ -52,7 +52,6 @@
 					<h3 class="cond_ver">버전선택</h3>
 			  	</div>
 			  	<div class="checkbox-container">
-					<input type="checkbox" name="version" value="" checked="checked">상관없음
 					<input type="checkbox" name="version" value="SP">SP
 					<input type="checkbox" name="version" value="KR">KR
 					<input type="checkbox" name="version" value="CN">CN
@@ -76,7 +75,6 @@
 					<h3 class="cond_ver">장르선택</h3>
 				</div>
 				<div class="checkbox-container">
-					<input type="checkbox" name="genre" value="" checked="checked">상관없음
 					<input type="checkbox" name="genre" value="g00000001">Action
 					<input type="checkbox" name="genre" value="g00000002">Comedy
 					<input type="checkbox" name="genre" value="g00000003">Romance
@@ -88,11 +86,15 @@
 				</div>
 				<div class="flex-container">
 					<h4>최소</h4>
-					<input type="text" name="min">
+					<div class="box-container">
+						<input class="input-field" type="text" name="min">
+					</div>
 				</div>
 				<div class="flex-container">
 					<h4>최대</h4>
-					<input type="text" name="max">
+					<div class="box-container">
+						<input class="input-field" type="text" name="max">
+					</div>
 				</div>
 				<div class="box-container" id="change-movie-button-container">
                     <input id="change-movie-button" type="submit" value="검색">

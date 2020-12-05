@@ -87,6 +87,11 @@ header{
     background-color: rgba(0, 0, 0, 0.6);
 }
 
+.main {
+    margin-top:50px;
+    padding: 50px;
+}
+
 table{
     display: flex;
     display: -webkit-box;

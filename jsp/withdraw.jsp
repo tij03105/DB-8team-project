@@ -29,9 +29,12 @@
         
         pstmt = conn.prepareStatement(sql);
         rs = pstmt.executeQuery();
+
+        stmt.close();
+        conn.close();
         out.println("<script>");
         out.println("alert('탈퇴 되었습니다.')");
-        out.println("location.href='../index.html'");
+        out.println("location.href='logout.jsp'");
         out.println("</script>");
     %>
     </body>

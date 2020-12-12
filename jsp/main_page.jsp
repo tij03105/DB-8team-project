@@ -114,7 +114,7 @@
             /* 성별과 나이가 없는 아이디의 경우 */
             if(sex == null && bdate == null){
               sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM RATING, MOVIE WHERE Tconst = Tcon AND R_ID IN " + 
-              "(SELECT R_ID FROM PROVIDES WHERE A_ID <> '" + id + "' GROUP BY R_ID HAVING COUNT(*) >= 5) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
+              "((SELECT R_ID FROM PROVIDES WHERE A_ID <> '" + id + "' GROUP BY R_ID HAVING COUNT(*) >= 5) MINUS (SELECT R_ID FROM PROVIDES WHERE A_ID = '" + id + "')) ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
               type = 1;
             }
             /* 성별은 존재하고 나이가 없는 아이디의 경우 */

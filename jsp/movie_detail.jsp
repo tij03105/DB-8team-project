@@ -219,8 +219,7 @@
   <%
    sql = "select * from rating r, provides p where r.r_id = p.r_id and a_id = '"+id+"' and r.tcon = '"+tconst+"'";
     rs = stmt.executeQuery(sql);
-    rs.next();
-    if(rs == null){
+    if(!rs.isBeforeFirst()){
   %>
   <h3>점수를 기입해주세요 (0.0 ~ 10.0)</h3>
   <form id="form" class="rating-form" action="rating_act.jsp" method="post">

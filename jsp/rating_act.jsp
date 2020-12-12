@@ -24,10 +24,8 @@
         String maxconst = "";
         String sql = "";
         String id = (String)session.getAttribute("id");
-        
         try {
             sql = "SELECT r_id FROM RATING WHERE tcon = '" + tconst + "'";
-            System.out.println(sql);
             rs = stmt.executeQuery(sql);
             if(!rs.isBeforeFirst()) {
                 sql = "select max(R_ID) from RATING";
@@ -42,13 +40,12 @@
                 maxconst = "r" + maxconst;
 
                 sql = "insert into RATING values('" + tconst + "', '" + maxconst + "', 0 )";
-                System.out.println(sql);
                 rs = stmt.executeQuery(sql);
-            }
             else{
                 rs.next();
                 maxconst = rs.getString(1);
             }
+            
             sql = "insert into PROVIDES values( " + rating + " ,  '" + maxconst + "', '" + id + "')"; 
             rs = stmt.executeQuery(sql);
             sql = "select AVG(Rating) FROM PROVIDES WHERE R_ID = '" + maxconst + "'";
@@ -57,7 +54,6 @@
             Double mean = rs.getDouble(1);
             mean = Math.round(mean*10.0)/10.0;
             sql = "update RATING SET Average_Rating = " + mean + " WHERE  Tcon = '" + tconst  + "'";
-            System.out.println(sql);
             rs = stmt.executeQuery(sql);
         }catch (SQLException e) {
             e.printStackTrace();

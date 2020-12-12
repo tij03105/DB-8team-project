@@ -170,7 +170,7 @@
           out.println("</div>");
           out.println("<table class=\"table-fill\">");
           out.println("<thead>");
-          sql = "SELECT * FROM (SELECT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM PROVIDES P, RATING R, MOVIE " +
+          sql = "SELECT * FROM (SELECT DISTINCT Tconst, Title, Title_type, Is_adult, Runtime_minutes, Average_rating FROM PROVIDES P, RATING R, MOVIE " +
             "WHERE Gcode = '" + gCode.get(i) + "' AND Tconst = Tcon AND P.A_ID <> '" + id + "' AND P.R_ID = R.R_ID ORDER BY Average_rating DESC) WHERE rownum BETWEEN 1 AND 5";
           
           out.println("<tr>");

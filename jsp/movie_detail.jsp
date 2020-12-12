@@ -69,6 +69,7 @@
         request.setCharacterEncoding("UTF-8");
         String sql;
         String tconst = request.getParameter("tconst");
+        String id = (String)session.getAttribute("id");
         String title;
         String type;
         String is_adult;
@@ -215,6 +216,12 @@
         </tbody>
     </table>
   <h1 class="title">평가하기</h1>
+  <%
+   sql = "select * from rating r, provides p where r.r_id = p.r_id and a_id = '"+id+"' and r.tcon = '"+tconst+"'";
+    rs = stmt.executeQuery(sql);
+    rs.next();
+    if(rs == null){
+  %>
   <h3>점수를 기입해주세요 (0.0 ~ 10.0)</h3>
   <form id="form" class="rating-form" action="rating_act.jsp" method="post">
     <input type="hidden" name="tconst" value="<%=tconst%>">
@@ -225,6 +232,9 @@
         <input id="rating_button" type="submit" value="완료">
     </div>
   </form>
+  <%} else{
+  %><h3>이미 평가하신 영화입니다</h3><%
+  }%>
    
 <script language="javascript"> 
       document.form.submit();

@@ -186,6 +186,18 @@
 		" tconst NOT IN (SELECT tcon FROM RATING R, PROVIDES P WHERE A_ID = '" + id + "' AND P.R_ID = R.R_ID)";
 	}
 	
+	try {
+		System.out.println(sql);
+		
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		//해당 값의 개수를 가져옵니다.
+		//rs에서 값을 가져올 때에는 타입에 맞게 getString, getInt 처럼 가져올 수 있다.
+
+		if(!rs.isBeforeFirst()){
+			out.println("검색 결과가 없습니다.");
+		}
+		else{
 	%>
 	<div class="table-title">
           <h1>검색결과</h1>
@@ -205,32 +217,20 @@
           </tr>
 	</thead>
 	<%
-	// 데이터 베이스 연결
-	try {
-		System.out.println(sql);
-		
-		stmt = conn.createStatement();
-		rs = stmt.executeQuery(sql);
-		//해당 값의 개수를 가져옵니다.
-		//rs에서 값을 가져올 때에는 타입에 맞게 getString, getInt 처럼 가져올 수 있다.
-
-		if(!rs.isBeforeFirst()){
-			out.println("검색 결과가 없습니다.");
-		}
-		
-		while(rs.next()){
-			out.println("<tr class=\"table\" id=\"" + rs.getString(1) + "\">");
-			out.println("<td class=\"text-left\">" + rs.getString(2) + "</th>");
-			out.println("<td class=\"text-center\">" + rs.getString(3) + "</th>");
-			out.println("<td class=\"text-center\">" + rs.getString(4) + "</th>");
-			out.println("<td class=\"text-center\">" + rs.getString(5) + "</th>");
-			if(resultType){
-				out.println("<td class=\"text-center\">" + rs.getString(7) + "</th>");
+			while(rs.next()){
+				out.println("<tr class=\"table\" id=\"" + rs.getString(1) + "\">");
+				out.println("<td class=\"text-left\">" + rs.getString(2) + "</th>");
+				out.println("<td class=\"text-center\">" + rs.getString(3) + "</th>");
+				out.println("<td class=\"text-center\">" + rs.getString(4) + "</th>");
+				out.println("<td class=\"text-center\">" + rs.getString(5) + "</th>");
+				if(resultType){
+					out.println("<td class=\"text-center\">" + rs.getString(7) + "</th>");
+				}
+				out.println("</tr>");
 			}
-			out.println("</tr>");
+			
+			out.println("</table>");
 		}
-		
-		out.println("</table>");
 		rs.close();
 	}catch (Exception c){
 		System.out.println(c.getMessage());

@@ -24,8 +24,10 @@
         String maxconst = "";
         String sql = "";
         String id = (String)session.getAttribute("id");
+        
         try {
             sql = "SELECT r_id FROM RATING WHERE tcon = '" + tconst + "'";
+            System.out.println(sql);
             rs = stmt.executeQuery(sql);
             if(!rs.isBeforeFirst()) {
                 sql = "select max(R_ID) from RATING";
@@ -40,7 +42,9 @@
                 maxconst = "r" + maxconst;
 
                 sql = "insert into RATING values('" + tconst + "', '" + maxconst + "', 0 )";
+                System.out.println(sql);
                 rs = stmt.executeQuery(sql);
+            }
             else{
                 rs.next();
                 maxconst = rs.getString(1);
@@ -53,13 +57,14 @@
             Double mean = rs.getDouble(1);
             mean = Math.round(mean*10.0)/10.0;
             sql = "update RATING SET Average_Rating = " + mean + " WHERE  Tcon = '" + tconst  + "'";
+            System.out.println(sql);
             rs = stmt.executeQuery(sql);
         }catch (SQLException e) {
             e.printStackTrace();
             System.exit(1);
         }  
         out.println("<script>");
-        out.println("alert('회원 등급변경이 완료되었습니다.')");
+        out.println("alert('평가가 완료되었습니다.')");
         out.println("location.href='../jsp/main_page.jsp'");
         out.println("</script>");
     %>
